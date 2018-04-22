@@ -11,7 +11,8 @@ class InfinityScroll extends Component {
             offset: this.props.offset || 0, // starting point : 0 by default
             limit: this.props.limit || 10,  // number of data per loading
             thread: [],                     // data loaded
-            loadingData: false              // the loading flag
+            loadingData: false,              // the loading flag
+            allDataLoaded: false
         }
 
         this.scrollFunction = this.viewDidScroll.bind(this); //bind the scroll listener function
@@ -42,6 +43,8 @@ class InfinityScroll extends Component {
             if(data.length < this.state.limit){ //if we have loaded all the data
                 //stop the scroll listener (it just for cleaning, but you can keep it if needed)
                 window.removeEventListener('scroll', this.scrollFunction); 
+                //warn that all data was loaded
+                this.setState({ allDataLoaded: true });
             }
         })
     }
@@ -84,21 +87,30 @@ class InfinityScroll extends Component {
         //you can customize the template (and the css infinity-scroll.css)
         return (
             <div className="infinity-scroll-container">
-                    <ul className="infinity-scroll-list">
+                    <div className="infinity-scroll-list">
                         {
                             this.state.thread.map((person, index) => (
-                                    <li key={index} className="infinity-scroll-item">
-                    
-                                        <h4>{person.name}</h4>
-                                        <div dangerouslySetInnerHTML={{ __html: person.age }} />
-                             
-                                    </li>
-                                )
-                            )
+                                <div key={index} className="infinity-scroll-item">
+                
+                                    <h4 className="infinity-scroll-title">{index+1}. {person.name}</h4>
+                                    <div className="infinity-scroll-info">
+                                        <strong>Email:</strong> {person.email}
+                                    </div>
+                                    
+                                    <div className="infinity-scroll-info">
+                                        <strong>Phone:</strong>{ person.phone} 
+                                    </div>
+                                    <label className="infinity-scroll-info">
+                                        <strong>Address: </strong>
+                                        <div dangerouslySetInnerHTML={{ __html: person.address }} />
+                                    </label>
+                                </div>
+                            ))
                         }
                         <br/>
                         { this.state.loadingData ? <div className="infinity-scroll-loader"></div> : null }
-                    </ul>
+                        { this.state.allDataLoaded ? <div className="infinity-scroll-all-loaded">-- END --</div> : null }
+                    </div>
             </div>
         );
     }
