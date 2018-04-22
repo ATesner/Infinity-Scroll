@@ -59,7 +59,7 @@ class InfinityScroll extends Component {
             axios.get(url).then(response => { //you can replace axios with your favorite lib :)
 
                 setTimeout(() => { //the setTimeout is for simulate the back time response (you can delete it)
-                    //the response.data.slice is for simulate the offest and limit of an API
+                    //the response.data.slice is for simulate the offset and limit of an API
                     resolve(response.data.slice(offset, offset+limit))
                 }, 500)
             })
