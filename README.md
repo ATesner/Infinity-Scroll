@@ -5,6 +5,8 @@ It allow you to load data indefinitely when you scroll the page. Feel free to cu
 
 Test the component on the [Github Page](https://atesner.github.io/React-Infinity-Scroll/)
 
+![infinity-scroll-gif](http://antoinetesner.fr/wp-content/uploads/2018/04/infinity-scroll-gif.gif)
+
 ## Table of Contents
 
 - [Folder Structure](#folder-structure)
