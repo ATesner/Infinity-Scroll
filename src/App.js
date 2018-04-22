@@ -12,7 +12,7 @@ class App extends Component {
         </header>
        
         {/* offset param is zero by default */}
-        <InfinityScroll offset={0} limit={6} />
+        <InfinityScroll offset={0} limit={6} /> {/* load data per six */}
         
       </div>
     );

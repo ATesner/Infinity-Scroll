@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 It contains an Infinity Scroll component that you can integrate in your **React** project.<br>
-It allow you to load data indefinitely when you scroll the page.
+It allow you to load data indefinitely when you scroll the page. Feel free to customize the style.
 
 ## Table of Contents
 
@@ -60,7 +60,7 @@ Run `npm install` and `npm start` to test.
 ## Infinity Scroll component
 
 The component is the `src/component/infinity-scroll.jsx` file and the `src/component/infinity-scroll.css`.
-The back-end is simulated by the call of the `public/data/data.json`. You have to replace the url in the get method : 
+The back-end is simulated by the call of the `public/data/data.json`. You have to replace the url in the get method. The component use `axios` to load the data. Don't forget to run `npm install --save axios` in your project if you want to use it.
 
 ### `infinity-scroll.jsx`
 
@@ -93,6 +93,21 @@ Your back have to accept `offset` and `limit` parameters, to fetch data 10 per 1
 
   - **offset** parameter is the starting point of the fetch.
   - **limit** parameter is the number of data you want to fetch.
+
+Use the component like that :
+
+### `App.js`
+
+```js
+  render() {
+    return (
+      ...
+        {/* offset param is zero by default */}
+        <InfinityScroll offset={0} limit={6} /> {/* load data per six */}
+      ...  
+    );
+  }
+```
 
 The infinity scroll component detect when you scroll the page and load the data from the offset point plus the limit.
 

@@ -54,7 +54,7 @@ class InfinityScroll extends Component {
      */
     get(offset, limit) {
         return new Promise((resolve, reject) => {
-            let url = 'http://localhost:3000/data/data.json'; //or use your url (with offset and limit params)
+            let url = __dirname + 'data/data.json'; //or use your url (with offset and limit params)
             
             axios.get(url).then(response => { //you can replace axios with your favorite lib :)
 
