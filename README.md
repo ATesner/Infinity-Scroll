@@ -6,10 +6,10 @@ It allow you to load data indefinitely when you scroll the page.
 ## Table of Contents
 
 - [Folder Structure](#folder-structure)
+- [Installation](#installation)
 - [Infinity Scroll Component](#infinity-scroll-component)
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
-  - [npm test](#npm-test)
   - [npm run build](#npm-run-build)
   - [npm run eject](#npm-run-eject)
 
@@ -53,10 +53,14 @@ Read instructions below for using assets from JavaScript and HTML.
 You can, however, create more top-level directories.<br>
 They will not be included in the production build so you can use them for things like documentation.
 
+## Installation
+
+Run `npm install` and `npm start` to test.
+
 ## Infinity Scroll component
 
 The component is the `src/component/infinity-scroll.jsx` file and the `src/component/infinity-scroll.css`.
-The back-end is simulated by the call of the `public/data/data.json`. You have to replace the url in the get method of infinity scroll component. 
+The back-end is simulated by the call of the `public/data/data.json`. You have to replace the url in the get method : 
 
 ### `infinity-scroll.jsx`
 
@@ -87,8 +91,8 @@ The back-end is simulated by the call of the `public/data/data.json`. You have t
 
 Your back have to accept `offset` and `limit` parameters, to fetch data 10 per 10 for example. 
 
-  - **offset** parameter is the starting point of the fetch
-  - **limit** parameter is the number of data you want to fetch
+  - **offset** parameter is the starting point of the fetch.
+  - **limit** parameter is the number of data you want to fetch.
 
 The infinity scroll component detect when you scroll the page and load the data from the offset point plus the limit.
 
@@ -111,8 +115,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
-See the section about [deployment](#deployment) for more information.
 
 ### `npm run eject`
 
