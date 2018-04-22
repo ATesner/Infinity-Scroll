@@ -3,6 +3,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 It contains an Infinity Scroll component that you can integrate in your **React** project.<br>
 It allow you to load data indefinitely when you scroll the page. Feel free to customize the style.
 
+Test the component on the [Github Page](https://atesner.github.io/React-Infinity-Scroll/)
+
 ## Table of Contents
 
 - [Folder Structure](#folder-structure)
