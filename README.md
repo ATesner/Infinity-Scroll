@@ -1,10 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-It contains a component that you can integrate in your project.<br>
+It contains an Infinity Scroll component that you can integrate in your **React** project.<br>
+It allow you to load data indefinitely when you scroll the page.
 
 ## Table of Contents
 
 - [Folder Structure](#folder-structure)
+- [Infinity Scroll Component](#infinity-scroll-component)
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
   - [npm test](#npm-test)
@@ -16,18 +18,23 @@ It contains a component that you can integrate in your project.<br>
 After creation, your project should look like this:
 
 ```
-my-app/
+infinity-scroll/
   README.md
   node_modules/
   package.json
   public/
     index.html
-    favicon.ico
+    infinity-scroll-logo.png
+    data/
+      data.json
   src/
     App.css
     App.js
     index.css
     index.js
+    component/
+      infinity-scroll.jsx
+      infinity-scroll.css
 ```
 
 For the project to build, **these files must exist with exact filenames**:
@@ -45,6 +52,45 @@ Read instructions below for using assets from JavaScript and HTML.
 
 You can, however, create more top-level directories.<br>
 They will not be included in the production build so you can use them for things like documentation.
+
+## Infinity Scroll component
+
+The component is the `src/component/infinity-scroll.jsx` file and the `src/component/infinity-scroll.css`.
+The back-end is simulated by the call of the `public/data/data.json`. You have to replace the url in the get method of infinity scroll component. 
+
+### `infinity-scroll.jsx`
+
+```js
+//...
+    /**
+     * load the data with axios (you can use your own method if you want)
+     */
+    get(offset, limit) {
+        return new Promise((resolve, reject) => {
+            let url = 'http://localhost:3000/data/data.json'; //or use your url (with offset and limit params)
+            
+            axios.get(url).then(response => { //you can replace axios with your favorite lib :)
+
+                setTimeout(() => { //the setTimeout is for simulate the back time response (you can delete it)
+                    //the response.data.slice is for simulate the offest and limit of an API
+                    resolve(response.data.slice(offset, offset+limit))
+                }, 500)
+            })
+            .catch(error => {
+                console.log('CATCH Infinity-Scroll:', url, '\nError:', error)
+                reject(error)
+            })
+        })
+    }
+//...
+```
+
+Your back have to accept `offset` and `limit` parameters, to fetch data 10 per 10 for example. 
+
+  - **offset** parameter is the starting point of the fetch
+  - **limit** parameter is the number of data you want to fetch
+
+The infinity scroll component detect when you scroll the page and load the data from the offset point plus the limit.
 
 ## Available Scripts
 
