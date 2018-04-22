@@ -47,15 +47,6 @@ For the project to build, **these files must exist with exact filenames**:
 
 You can delete or rename the other files.
 
-You may create subdirectories inside `src`. For faster rebuilds, only files inside `src` are processed by Webpack.<br>
-You need to **put any JS and CSS files inside `src`**, otherwise Webpack won’t see them.
-
-Only files inside `public` can be used from `public/index.html`.<br>
-Read instructions below for using assets from JavaScript and HTML.
-
-You can, however, create more top-level directories.<br>
-They will not be included in the production build so you can use them for things like documentation.
-
 ## Installation
 
 Run `npm install` and `npm start` to test.
@@ -63,7 +54,7 @@ Run `npm install` and `npm start` to test.
 ## Infinity Scroll component
 
 The component is the `src/component/infinity-scroll.jsx` file and the `src/component/infinity-scroll.css`.
-The back-end is simulated by the call of the `public/data/data.json`. You have to replace the url in the get method. The component use `axios` to load the data. Don't forget to run `npm install --save axios` in your project if you want to use it.
+The back-end is simulated by the call of the `public/data/data.json`. **You have to replace the url in the get method, delete the `setTimeout`, and return your data as you like in the resolve()**. The component use `axios` to load the data. Don't forget to run `npm install --save axios` in your project if you want to use it.
 
 ### `infinity-scroll.jsx`
 
